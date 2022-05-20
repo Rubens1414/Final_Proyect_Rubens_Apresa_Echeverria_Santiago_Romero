@@ -11,6 +11,7 @@ ScreenManager:
     IngredienteAdScreen:
     salsa:
     recibo:
+    pedido_proceso:
 <MenuScreen>:
     name: 'menu'
     MDBoxLayout:
@@ -18,60 +19,12 @@ ScreenManager:
             pos_hint:{'center_x':0.5,'center_y':0.8}
             source: 'Imagen/imagen.png'
             size_hint:(0.3,0.3)
-    Image:
-        pos_hint:{'center_x':0.2,'center_y':0.1}
-        source: 'Imagen/Arepa.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.4,'center_y':0.3}
-        source: 'Imagen/Empanada.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.8,'center_y':0.6}
-        source: 'Imagen/Empanada.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.7,'center_y':0.4}
-        source: 'Imagen/Arepa.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.9,'center_y':0.1}
-        source: 'Imagen/Empanada.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.5,'center_y':0.1}
-        source: 'Imagen/Empanada.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.2,'center_y':0.5}
-        source: 'Imagen/Papa.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.1,'center_y':0.8}
-        source: 'Imagen/Papa.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.25,'center_y':0.7}
-        source: 'Imagen/Empanada.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.1,'center_y':0.3}
-        source: 'Imagen/Empanada.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.9,'center_y':0.9}
-        source: 'Imagen/Arepa.png'
-        size_hint:(0.1,0.1)
-    Image:
-        pos_hint:{'center_x':0.75,'center_y':0.2}
-        source: 'Imagen/Papa.png'
-        size_hint:(0.1,0.1)
+    
     MDFillRoundFlatIconButton:
         text: '¡Haz tu Pedido!'
         icon: "truck-delivery"
         pos_hint: {"center_x": .5, "center_y": .4}
         on_press: root.manager.current = 'Seleccion'
-        on_press: root.prueba()
     
 <SeleccionScreen>:
     name: 'Seleccion'
@@ -357,26 +310,27 @@ ScreenManager:
         id:Titulo_tipo
         pos_hint:{"center_x":0.5,"center_y":0.7+0.03}
         size_hint:(.5,.5)
-        theme_text_color:"Primary"
         font_style:"Body2"
         halign:"center"
         text: ' '
+        color: 255/255.0,69/255.0,0/255.0,1
     MDLabel:
         id:Titulo_Preparacion
         pos_hint:{"center_x":0.5,"center_y":0.6+0.05}
         size_hint:(.5,.5)
-        theme_text_color:"Primary"
         font_style:"Body2"
         halign:"center"
         text: ' '
+        color: 255/255.0,0/255.0,0/255.0,1
     MDLabel:
         id:Titulo_Relleno
         pos_hint:{"center_x":0.5,"center_y":0.5+0.07}
         size_hint:(.5,.5)
-        theme_text_color:"Primary"
         font_style:"Body2"
         halign:"center"
         text: ' '
+        color: 138/255.0,43/255.0,226/255.0,1
+
     MDLabel:
         id:Titulo_RellenoAD
         pos_hint:{"center_x":0.5,"center_y":0.5}
@@ -385,6 +339,7 @@ ScreenManager:
         font_style:"Body2"
         halign:"center"
         text: ' '
+        color: 210/255.0,105/255.0,30/255.0,1
     MDLabel:
         id:Titulo_salsa
         pos_hint:{"center_x":0.5,"center_y":0.4}
@@ -393,6 +348,7 @@ ScreenManager:
         font_style:"Body2"
         halign:"center"
         text: ' '
+        color: 210/255.0,43/255.0,105/255.0,1
     MDLabel:
         id:Informacion_Tipo
         pos_hint:{"center_x":0.5,"center_y":0.6+0.09}
@@ -433,6 +389,7 @@ ScreenManager:
         font_style:"Body2"
         halign:"center"
         text: ' '
+        
     BoxLayout:
         Image:
             source:'Imagen/Forma_recibo.png'
@@ -460,7 +417,41 @@ ScreenManager:
         size_hint:(0.1/2,0.1/2)
         on_press: root.Mostrar_Recibo()
         text:'Mostrar info'
-   
+    MDRectangleFlatButton:
+        pos_hint: {"center_x": 0.8, "center_y": 0.1}
+        size_hint:(0.1,0.1)
+        line_color: 0, 0, 0, 0
+        on_press: root.manager.current = 'Pedido_proceso'
+        on_press: root.Ocultar()
+        Image:
+            source:'Imagen/¡Hacer pedido!.png'
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+<pedido_proceso>
+    name:'Pedido_proceso'
+    Image:
+        source:'Imagen/Titulo6.png'
+        pos_hint: {'center_x':0.5,'center_y':0.8}
+        size_hint:(0.5,0.5)
+    Image:
+        source:'Imagen/motico.png'
+        pos_hint: {'center_x':0.5,'center_y':0.5}
+        size_hint:(0.5,0.5)
+    MDRectangleFlatButton:
+        pos_hint: {"center_x": 0.5, "center_y": 0.2+0.05}
+        size_hint:(0.1/2,0.1/2)
+        text:'Hacer otro pedido'
+        on_press: root.manager.current = 'Seleccion'
+    MDRectangleFlatButton:
+        pos_hint: {"center_x": 0.5, "center_y": 0.1+0.07}
+        size_hint:(0.1/2,0.1/2)
+        text:'Añadir a recomendados'
+    MDRectangleFlatButton:
+        pos_hint: {"center_x": 0.5, "center_y": 0.1}
+        size_hint:(0.1/2,0.1/2)
+        text:'Cancelar pedido'
+        on_press: root.manager.current = 'menu'
+
 """
 
 class Frito():
@@ -525,24 +516,18 @@ class Frito():
         elif(n==5):
          desplegar= f'{self.Salsa}'
         return desplegar
-     #print('Tipo de preparacion: {}'.format(self.prepar))
-     #print('Relleno de la {} : {}'.format(self.Tipo,self.relle))
-     #print('Relleno adicional de la {} : {}'.format(self.Tipo,self.rellead))
-     #print('Tipo de salsa : {}'.format(self.Salsa))
 
 
 
 frito=Frito()
 
 class MenuScreen(Screen):
-    def prueba(self,*args):
-        self.prueba1()
-    def prueba1(self):
-        print('Prueba')
+    pass
 
 class SeleccionScreen(Screen):
      def Tipofrito(self,n):
         frito.tipo_f(n)
+
 class PreparacionScreen(Screen):
     def TipoPrepa(self,n):
         frito.preparacion(n)       
@@ -560,8 +545,9 @@ class salsa(Screen):
        frito.salsa_f(n)
 
 class recibo(Screen):
+    
    def Mostrar_Recibo(self):
-       self.ids.Titulo_tipo.text='Tipo:'
+       self.ids.Titulo_tipo.text='Tipo de frito:'
        self.ids.Titulo_Preparacion.text='Preparación:'
        self.ids.Titulo_Relleno.text='Relleno:'
        self.ids.Titulo_RellenoAD.text='Relleno Adicional:'
@@ -584,7 +570,8 @@ class recibo(Screen):
        self.ids.Informacion_RelleAd.text=' '
        self.ids.Informacion_Salsa.text=' '
        self.ids.info.pos_hint={'center_x':0.5,'center_y':0.5}
-
+class pedido_proceso(Screen):
+    pass
 sm = ScreenManager()
 sm.add_widget(MenuScreen(name='menu'))
 sm.add_widget(SeleccionScreen(name='Seleccion'))
@@ -593,6 +580,7 @@ sm.add_widget(IngredientesScreen(name='Igrediente'))
 sm.add_widget(IngredienteAdScreen(name='IngredienteAD'))
 sm.add_widget(salsa(name='salsa'))
 sm.add_widget(recibo(name='recibo'))
+sm.add_widget(pedido_proceso(name='Pedido_proceso'))
 
 class DemoApp(MDApp):
     def build(self):
