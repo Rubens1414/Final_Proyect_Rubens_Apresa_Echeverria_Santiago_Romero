@@ -442,10 +442,7 @@ ScreenManager:
         size_hint:(0.1/2,0.1/2)
         text:'Hacer otro pedido'
         on_press: root.manager.current = 'Seleccion'
-    MDRectangleFlatButton:
-        pos_hint: {"center_x": 0.5, "center_y": 0.1+0.07}
-        size_hint:(0.1/2,0.1/2)
-        text:'Añadir a recomendados'
+   
     MDRectangleFlatButton:
         pos_hint: {"center_x": 0.5, "center_y": 0.1}
         size_hint:(0.1/2,0.1/2)
