@@ -197,7 +197,7 @@ ScreenManager:
         on_press: root.manager.current = 'salsa'
         on_press: root.TiporelleAd('piña')  
         Image:
-            source:'Imagen/piña.png'
+            source:'Imagen/pina.png'
             center_x:self.parent.center_x
             center_y:self.parent.center_y
     MDRectangleFlatButton:
@@ -218,7 +218,7 @@ ScreenManager:
         on_press: root.TiporelleAd('Verdura')
 
         Image:
-            source:'Imagen/Verdura.png'
+            source:'Imagen/verdura.png'
             center_x:self.parent.center_x
             center_y:self.parent.center_y
     MDRectangleFlatButton:
@@ -415,6 +415,7 @@ ScreenManager:
     MDRectangleFlatButton:
         pos_hint: {"center_x": 0.5, "center_y": 0.1}
         size_hint:(0.1/2,0.1/2)
+        line_color: 0, 0, 0, 0
         on_press: root.Mostrar_Recibo()
         text:'Mostrar info'
     MDRectangleFlatButton:
@@ -424,7 +425,7 @@ ScreenManager:
         on_press: root.manager.current = 'Pedido_proceso'
         on_press: root.Ocultar()
         Image:
-            source:'Imagen/¡Hacer pedido!.png'
+            source:'Imagen/hacer_pedido.png'
             center_x:self.parent.center_x
             center_y:self.parent.center_y
 <pedido_proceso>
@@ -440,12 +441,14 @@ ScreenManager:
     MDRectangleFlatButton:
         pos_hint: {"center_x": 0.5, "center_y": 0.2+0.05}
         size_hint:(0.1/2,0.1/2)
+        line_color: 0, 0, 0, 0
         text:'Hacer otro pedido'
         on_press: root.manager.current = 'Seleccion'
    
     MDRectangleFlatButton:
         pos_hint: {"center_x": 0.5, "center_y": 0.1}
         size_hint:(0.1/2,0.1/2)
+        line_color: 0, 0, 0, 0
         text:'Cancelar pedido'
         on_press: root.manager.current = 'menu'
 
