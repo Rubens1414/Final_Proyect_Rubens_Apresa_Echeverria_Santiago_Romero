@@ -1,7 +1,7 @@
 from kivymd.app import MDApp
 from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.properties import StringProperty
+
 screen_helper = """
 ScreenManager:
     MenuScreen:
@@ -453,8 +453,9 @@ ScreenManager:
         on_press: root.manager.current = 'menu'
 
 """
-
+#Se crea la clase frito 
 class Frito():
+    #Este metodo ayuda a detectar que tipo de frito quiere el usuario
     def tipo_f(self,select):
        if select=='papa':
            Tipo='Papa'
@@ -464,12 +465,14 @@ class Frito():
             Tipo='Arepa'
        self.Tipo=Tipo
        return Tipo
+    #Este metodo ayuda a detectar que preparacion desea el usuario en su frito
     def preparacion(self,select):
         if select=='Horneado':
             prepar='Horneado'
         elif select=='Frito':
             prepar='Frito'
         self.prepar = prepar
+    #Este metodo ayuda a detectar el relleno que elegio el usuario
     def relleno(self,select):
         if select == 'Carne':
             relle='Carne'
@@ -482,6 +485,7 @@ class Frito():
         elif select == 'Pollo':
             relle='Pollo'
         self.relle = relle
+    #Este metodo ayuda a detectar el relleno adicional que elegio el usuario si quiere o no
     def relleno_ad(self,select):
         if select == 'Verdura':
             rellead='Verdura'
@@ -492,6 +496,7 @@ class Frito():
         elif select == 'nada':
             rellead='Ninguno'
         self.rellead = rellead
+    #Detecta que tipo de salsa quiere el usuario 
     def salsa_f(self,select):
         if select == 'Salsa_Rosada':
                 Salsa='Rosada'
@@ -504,6 +509,8 @@ class Frito():
         elif select == 'nada':
                 Salsa='Ninguno'
         self.Salsa = Salsa
+
+    #El metodo mostrar nos ayuda al que al final muestre la informacion que pidio el usuario
     def mostrar(self,n):
         if(n==1):
          desplegar= f'{self.Tipo}'
@@ -518,34 +525,53 @@ class Frito():
         return desplegar
 
 
-
+#Se crea el objeto frito de la clase frito
 frito=Frito()
 
+
+#Esta clases ayudan manejar las diferentes ventanas de nuestra app:
+# "Screen" es una herramienta de Kivy que nos ayuda a detectar que es una pantalla
+#La clase "MenuScreen" muestra la pantalla de inicio 
 class MenuScreen(Screen):
     pass
-
+#La clase "SeleccionScreen"  nos muestra los tipos de frito de nuestra app
 class SeleccionScreen(Screen):
+    #El metodo "Tipofrito" es llamado de un boton que nos ayudara para detectar el tipo de frito
      def Tipofrito(self,n):
+        #con el metodo de la clase frito detectara el tipo de frito que quiere el usuario
         frito.tipo_f(n)
-
+#La clase "PreparacionScreen" otra clase que nos muestra la pantalla de preparacion
 class PreparacionScreen(Screen):
+     #El metodo "TipoPrepa" es llamado de un boton que nos ayudara a llamar al metodo del objeto frito
     def TipoPrepa(self,n):
+        #con el metodo de la clase frito detectara la preparacion del usuario
+
         frito.preparacion(n)       
+#La clase "IngredientesScreen" otra clase que nos muestra la pantalla de los ingredientes
     
 class IngredientesScreen(Screen):
-    def tiporelle(self,n):
-        frito.relleno(n)
-       
-class IngredienteAdScreen(Screen):
-    def TiporelleAd(self,n):
-        frito.relleno_ad(n)
+   #El metodo "tiporelle" es llamado de un boton que nos ayudara a llamar al metodo del objeto frito
 
+    def tiporelle(self,n):
+      #con el metodo de la clase frito detectara el relleno del usuario
+        frito.relleno(n)
+#La clase "IngredienteAdScreen" otra clase que nos muestra la pantalla de los ingredientes adicionales     
+class IngredienteAdScreen(Screen):
+    #El metodo "TiporelleAd" es llamado de un boton que nos ayudara a llamar al metodo del objeto frito
+
+    def TiporelleAd(self,n):
+        #con el metodo de la clase frito detectara el relleno adicional del usuario
+
+        frito.relleno_ad(n)
+#La clase "salsa" otra clase que nos muestra la pantalla de las salsa   
 class salsa(Screen):
+   #El metodo "salsa" es llamado de un boton que nos ayudara a llamar al metodo del objeto frito
+
     def salsa(self,n):
        frito.salsa_f(n)
-
+#Fianlmente la clase recibo esta clase nos mostrara a traves de un label de kivymd la informacion del frito
 class recibo(Screen):
-    
+    #Conexion con el boton de mostrar recibo
    def Mostrar_Recibo(self):
        self.ids.Titulo_tipo.text='Tipo de frito:'
        self.ids.Titulo_Preparacion.text='Preparación:'
@@ -558,6 +584,8 @@ class recibo(Screen):
        self.ids.Informacion_RelleAd.text=f'{frito.mostrar(4)}'
        self.ids.Informacion_Salsa.text=f'{frito.mostrar(5)}'
        self.ids.info.pos_hint={'center_x':0.7,'center_y':0.3}
+   #Conexion con el boton de esconder el recibo
+
    def Ocultar(self):
        self.ids.Titulo_tipo.text=' '
        self.ids.Titulo_Preparacion.text=' '
@@ -570,8 +598,11 @@ class recibo(Screen):
        self.ids.Informacion_RelleAd.text=' '
        self.ids.Informacion_Salsa.text=' '
        self.ids.info.pos_hint={'center_x':0.5,'center_y':0.5}
+#Esta clase simula que el pedido ya se envio y estara pronto para entregar
 class pedido_proceso(Screen):
     pass
+
+#Screen manager es una clase de Kivy que nos ayuda a controlar las pantallas
 sm = ScreenManager()
 sm.add_widget(MenuScreen(name='menu'))
 sm.add_widget(SeleccionScreen(name='Seleccion'))
@@ -581,10 +612,12 @@ sm.add_widget(IngredienteAdScreen(name='IngredienteAD'))
 sm.add_widget(salsa(name='salsa'))
 sm.add_widget(recibo(name='recibo'))
 sm.add_widget(pedido_proceso(name='Pedido_proceso'))
-
+#Esta clase carga nuestro archivo .kv para asi mostrarlo a la pantalla
 class DemoApp(MDApp):
     def build(self):
         screen = Builder.load_string(screen_helper)
         return screen
+#Este condicional ayuda mucho para detectar que debe correr 
 if __name__ == '__main__':       
   DemoApp().run()
+
