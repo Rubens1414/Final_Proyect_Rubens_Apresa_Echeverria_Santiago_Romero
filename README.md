@@ -1,3 +1,37 @@
-# Final_Proyect_Rubens_Apresa_Echeverria_Santiago_Romero
-# UML:
-![hLEzRlCm3Dpr51o_hq1UmEYG0XsBeaEs8Z1Ocp44oA91AbtIldjbIVcHawdDPXrFT-HHNcj02VlHcSwXAdH2s5dsxKviO3qO0C_ZXs0RzXbhD4X4Wvtu6fY49fIaK63h0ubbQNjo5VyDVK3di9dAHyH6ZZMKVrUr_urdJ-QxTAde50z7qtJwasgHdOGxqZW53ZohlywJKr5-ciWvs](https://user-images.githubusercontent.com/98895114/164507026-8f781a55-d1c4-46cd-b17a-8029caec0f28.png)
+<div align="center">
+  
+   <div align="center">
+     <img src="presentacion/Logo.png" alt="Fritos" style="width: 40%;"/>
+   </div><br/>
+  
+  [![Python Version](https://img.shields.io/badge/python-%3E%3D3.9.12-blue)](https://www.python.org/downloads/release/python-3912/)
+  
+  # ¡Frito de los Frita2!
+  Rubens Apresa Echeverria
+  Santiago Romero Martinez
+  
+</div>
+
+<div align="center">
+<img src="presentacion/ejemplo.gif" alt="Mostrar" style="width: 80%;"/>
+</div><br/>
+
+## Que te ofrece nuestra App de fritos
+Nuestra aplicacion ofrece una manera diferente de pedir tu frito de una manera muy creativa
+asi podras pedir tu frito a tu gusto como quieres sin problemas
+
+# Nuestro Diagrama UML
+
+<div align="center">
+  
+ <img src="presentacion/Uml.png" alt="UML" style="width: 40%;"/>
+ 
+</div>
+
+# ¿Quieres probarla?
+
+<div align="center">
+
+ <img src="presentacion/Qr.png" alt="QR" style="width: 40%;"/>
+
+</div>
